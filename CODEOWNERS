@@ -1,0 +1,100 @@
+# GitHub handles appear ONLY in this file.
+# java1 = @Erichthonius07   java2 = @Mahishukla1207
+# ml1   = @NehalAjmal     ml2   = @mridul-afk     ml3 = @Navistha
+
+/CODEOWNERS                      @Erichthonius07
+/README.md                       @Erichthonius07
+/.gitignore                      @Erichthonius07
+/.github/workflows/ci-java1.yml  @Erichthonius07
+/.github/workflows/ci-java2.yml  @Mahishukla1207
+/.github/workflows/ci-ml1.yml    @NehalAjmal
+/.github/workflows/ci-ml2.yml    @mridul-afk
+/.github/workflows/ci-ml3.yml    @Navistha
+/.github/workflows/gate.yml      @Erichthonius07
+
+# Shared exceptions to one-folder-one-owner
+/infra/base.yml                  @Erichthonius07 @Mahishukla1207 @NehalAjmal @mridul-afk @Navistha
+/contracts/                      @Erichthonius07 @Navistha
+# If contract 11 (lineage export) is adopted, add its reader as a second approver for that schema.
+
+# Java
+/platform/pom.xml                @Erichthonius07
+/platform/common/                @Erichthonius07
+/platform/control-plane/         @Erichthonius07
+/platform/reference-app/         @Erichthonius07
+/platform/graph-stores/          @Erichthonius07
+/platform/handlers/              @Mahishukla1207
+/platform/audit/                 @Mahishukla1207
+/platform/verdict/               @Mahishukla1207
+/platform/dashboard/             @Mahishukla1207
+
+# Studies
+/studies/fides-comparison/            @Erichthonius07
+/studies/reliability-control-plane/   @Erichthonius07
+/studies/storage-erasure/             @Mahishukla1207
+/studies/reliability-stores-log/      @Mahishukla1207
+
+# ML
+/ml/apps-audit/                  @NehalAjmal
+/ml/models/                      @mridul-afk
+/ml/unlearning/                  @Navistha
+
+# TEMPORARY (weeks 1-12): ml1 builds, the future owner must review. Delete this block after the week 13 handover.
+/ml/early-ml/                           @NehalAjmal
+/ml/early-ml/HANDOVER.md                @NehalAjmal
+/ml/early-ml/split/                     @NehalAjmal @mridul-afk
+/ml/early-ml/embeddings/                @NehalAjmal @mridul-afk
+/ml/early-ml/twin/                      @NehalAjmal @mridul-afk
+/ml/early-ml/neggrad/                   @NehalAjmal @Navistha
+/ml/early-ml/output-check/              @NehalAjmal @mridul-afk
+/ml/early-ml/scrub/                     @NehalAjmal @Navistha
+/ml/early-ml/rep-probe/                 @NehalAjmal @mridul-afk
+
+# Paper: one owner per section file. Assign section owners here as sections are created.
+/paper/sections/                 @Erichthonius07
+/paper/build/                    @NehalAjmal
+/paper/figures/java1/            @Erichthonius07
+/paper/figures/java2/            @Mahishukla1207
+/paper/figures/ml1/              @NehalAjmal
+/paper/figures/ml2/              @mridul-afk
+/paper/figures/ml3/              @Navistha
+/paper/refs/java1.bib            @Erichthonius07
+/paper/refs/java2.bib            @Mahishukla1207
+/paper/refs/ml1.bib              @NehalAjmal
+/paper/refs/ml2.bib              @mridul-afk
+/paper/refs/ml3.bib              @Navistha
+/paper/provenance/java1.csv      @Erichthonius07
+/paper/provenance/java2.csv      @Mahishukla1207
+/paper/provenance/ml1.csv        @NehalAjmal
+/paper/provenance/ml2.csv        @mridul-afk
+/paper/provenance/ml3.csv        @Navistha
+
+# Records and results
+/registry/java1/                 @Erichthonius07
+/registry/java2/                 @Mahishukla1207
+/registry/ml1/                   @NehalAjmal
+/registry/ml2/                   @mridul-afk
+/registry/ml3/                   @Navistha
+/experiments/java1/              @Erichthonius07
+/experiments/java2/              @Mahishukla1207
+/experiments/ml1/                @NehalAjmal
+/experiments/ml2/                @mridul-afk
+/experiments/ml3/                @Navistha
+
+# Docs
+/docs/architecture/              @Erichthonius07
+/docs/run-guide.md               @NehalAjmal
+/docs/java1/                     @Erichthonius07
+/docs/java2/                     @Mahishukla1207
+/docs/ml1/                       @NehalAjmal
+/docs/ml2/                       @mridul-afk
+/docs/ml3/                       @Navistha
+/docs/checkpoints/               @Erichthonius07
+
+# Scripts
+/scripts/java1/                  @Erichthonius07
+/scripts/java2/                  @Mahishukla1207
+/scripts/ml1/                    @NehalAjmal
+/scripts/ml2/                    @mridul-afk
+/scripts/ml3/                    @Navistha
+/scripts/clean-clone/            @Erichthonius07 @NehalAjmal

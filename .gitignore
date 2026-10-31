@@ -1,0 +1,46 @@
+# Big files never go to git. Store them in shared/ and describe them in registry/.
+shared/*
+!shared/README.md
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.npy
+*.npz
+*.parquet
+*.faiss
+*.index
+*.dump
+*.sqlite
+*.sqlite3
+*.db
+*.zip
+*.tar
+*.tar.gz
+
+# Secrets and local config
+.env
+*.pem
+*.key
+
+# Java
+target/
+*.class
+.idea/
+.vscode/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# Generated contract code (each ML folder generates its own at build time)
+**/_generated/
+
+# OS
+.DS_Store
+Thumbs.db

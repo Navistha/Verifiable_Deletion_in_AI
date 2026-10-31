@@ -1,0 +1,78 @@
+# One compose file for everyone. Run:
+#   docker compose -p <id> -f infra/base.yml up -d                     (shared services)
+#   docker compose -p <id> -f infra/base.yml --profile <id> up -d      (plus your own)
+#
+# RULES
+#  - Edit only your own block. Leave two blank lines between blocks.
+#  - Keep services alphabetical inside a block.
+#  - Prefix volumes and networks with your id (java2_mysql_data).
+#  - Ports come from .env, never hardcoded.
+#  - Changes to the shared block need a message to the group first.
+
+services:
+
+  # ---- shared (java1 owns; no profile, always starts) ----
+  minio:
+    image: minio/minio:latest
+    command: server /data --console-address ":9001"
+    ports: ["${PORT_MINIO:-9000}:9000", "${PORT_MINIO_CONSOLE:-9001}:9001"]
+    volumes: ["minio_data:/data"]
+
+  ollama:
+    image: ollama/ollama:latest
+    ports: ["${PORT_OLLAMA:-11434}:11434"]
+    volumes: ["ollama_data:/root/.ollama"]
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dev}
+    ports: ["${PORT_POSTGRES:-5432}:5432"]
+    volumes: ["postgres_data:/var/lib/postgresql/data"]
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports: ["${PORT_RABBIT:-5672}:5672", "${PORT_RABBIT_UI:-15672}:15672"]
+
+  redis:
+    image: redis:7
+    ports: ["${PORT_REDIS:-6379}:6379"]
+
+
+  # ---- java1 (add services with profiles: [java1]) ----
+
+
+  # ---- java2 ----
+  java2_elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.0
+    profiles: [java2]
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+    ports: ["${PORT_ELASTIC:-9200}:9200"]
+    volumes: ["java2_elastic_data:/usr/share/elasticsearch/data"]
+
+  java2_mysql:
+    image: mysql:8
+    profiles: [java2]
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-dev}
+    ports: ["${PORT_MYSQL:-3306}:3306"]
+    volumes: ["java2_mysql_data:/var/lib/mysql"]
+
+
+  # ---- ml1 (apps under audit use their own compose files in ml/apps-audit/deployments/) ----
+
+
+  # ---- ml2 ----
+
+
+  # ---- ml3 ----
+
+
+volumes:
+  minio_data:
+  ollama_data:
+  postgres_data:
+  java2_elastic_data:
+  java2_mysql_data:
